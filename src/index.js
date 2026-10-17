@@ -58,9 +58,14 @@ export class ChatRoom extends DurableObject {
       message,
       Date.now()
     );
+    
+    const id = Number(
+      this.ctx.storage.sql.exec(
+        "SELECT last_insert_rowid() AS id"
+      ).one().id
+    );
 
-    const id = Number(result.lastRowId);
-    const item = { id, name: name || "anon", message };
+const item = { id, name: name || "anon", message };
 
     for (const socket of this.ctx.getWebSockets()) {
       try {
