@@ -1,0 +1,6 @@
+{
+  "$schema": "https://unpkg.com/wrangler@4/config-schema.json",
+  "name": "neocities-chat",
+  "main": "src/index.js",
+  "compatibility_date": "2026-10-17"
+}
