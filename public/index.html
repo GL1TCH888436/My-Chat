@@ -1,1 +1,200 @@
-hi
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>neocities chat</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 24px;
+      background: #fffafd;
+      color: #493b4b;
+      font: 14px monospace;
+    }
+
+    main {
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 18px;
+      font-weight: normal;
+      border-bottom: 1px dashed #d7a9c8;
+      padding-bottom: 12px;
+    }
+
+    #status {
+      color: #987b93;
+      font-size: 12px;
+      margin: 12px 0;
+    }
+
+    #messages {
+      height: 360px;
+      overflow-y: auto;
+      border: 1px solid #e8cddd;
+      background: white;
+      padding: 12px;
+      overflow-wrap: anywhere;
+    }
+
+    .message {
+      margin: 0 0 8px;
+      line-height: 1.5;
+    }
+
+    .number {
+      color: #b47aa1;
+    }
+
+    .name {
+      color: #875a87;
+    }
+
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    input, button {
+      box-sizing: border-box;
+      padding: 10px;
+      border: 1px solid #dfbfd4;
+      border-radius: 0;
+      background: white;
+      color: inherit;
+      font: inherit;
+    }
+
+    #name {
+      width: 100px;
+    }
+
+    #message {
+      flex: 1;
+      min-width: 120px;
+    }
+
+    button {
+      cursor: pointer;
+      background: #f8eaf3;
+    }
+
+    button:hover {
+      background: #f0d9e8;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>♡ little chat room ♡</h1>
+    <div id="status">Подключение...</div>
+    <div id="messages" aria-live="polite"></div>
+
+    <form id="form">
+      <input id="name" maxlength="20"
+        placeholder="ник" value="neko"
+        aria-label="Твой ник">
+      <input id="message" maxlength="300"
+        placeholder="напиши что-нибудь..."
+        aria-label="Сообщение" required>
+      <button type="submit">send ↵</button>
+    </form>
+  </main>
+
+  <script>
+    const status = document.querySelector("#status");
+    const messages = document.querySelector("#messages");
+    const form = document.querySelector("#form");
+    const nameInput = document.querySelector("#name");
+    const messageInput = document.querySelector("#message");
+
+    let socket;
+    let reconnectTimer;
+
+    function addMessage(item) {
+      const line = document.createElement("div");
+      line.className = "message";
+
+      const number = document.createElement("span");
+      number.className = "number";
+      number.textContent = "#" + String(item.id).padStart(3, "0") + " ";
+
+      const name = document.createElement("span");
+      name.className = "name";
+      name.textContent = item.name + ": ";
+
+      const text = document.createElement("span");
+      text.textContent = item.message;
+
+      line.append(number, name, text);
+      messages.append(line);
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    function connect() {
+      clearTimeout(reconnectTimer);
+
+      const protocol = location.protocol === "https:" ? "wss:" : "ws:";
+      socket = new WebSocket(
+        protocol + "//" + location.host + "/api/chat"
+      );
+
+      socket.onopen = () => {
+        status.textContent = "● подключено";
+      };
+
+      socket.onmessage = event => {
+        let data;
+
+        try {
+          data = JSON.parse(event.data);
+        } catch {
+          return;
+        }
+
+        if (data.type === "history") {
+          messages.replaceChildren();
+          data.messages.forEach(addMessage);
+        } else if (data.type === "message") {
+          addMessage(data.item);
+        }
+      };
+
+      socket.onclose = () => {
+        status.textContent = "○ соединение потеряно, переподключение...";
+        reconnectTimer = setTimeout(connect, 3000);
+      };
+
+      socket.onerror = () => socket.close();
+    }
+
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+
+      const name = nameInput.value.trim().slice(0, 20) || "anon";
+      const message = messageInput.value.trim().slice(0, 300);
+
+      if (!message || !socket || socket.readyState !== WebSocket.OPEN) {
+        return;
+      }
+
+      socket.send(JSON.stringify({
+        type: "message",
+        name,
+        message
+      }));
+
+      messageInput.value = "";
+      messageInput.focus();
+    });
+
+    connect();
+  </script>
+</body>
+</html>
