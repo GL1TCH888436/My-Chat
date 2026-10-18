@@ -1,3 +1,25 @@
+@font-face {
+    font-family: "DMC";
+    src: url("../fonts/Devil May Cry 4/Trajan Pro Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    
+    font-family: "pixel";
+    src: url("../fonts/UnifontExMono.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+body {
+    background-image: url("../images/background.png");
+    background-size: cover;
+    margin: 0 0;
+}
+
  body {
    margin: 0;
    padding: 24px;
@@ -81,3 +103,231 @@
  button:hover {
    background: #f0d9e8;
  }
+
+
+p {
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    width: fit-content;
+}
+
+main {
+    font-family: "pixel";
+    margin-top: 3%;
+    justify-content: center;
+}
+
+#sakura-overlay {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 9999;
+}
+
+.sakura-petal {
+    position: absolute;
+    top: -30px;
+    color: #ffb7d5;
+    font-size: 18px;
+    opacity: 0.8;
+    animation: sakura-fall linear infinite;
+    text-shadow: 0 0 4px #fff0f6;
+}
+
+@keyframes sakura-fall {
+0% {
+    transform: translate3d(0, -5vh, 0) rotate(0deg);
+}
+100% {
+    transform: translate3d(100px, 110vh, 0) rotate(600deg);
+}
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #sakura-overlay { display: none; }
+}
+
+.banner {
+    margin: auto;
+    display: flex;
+    width: 50%;
+    overflow: hidden;
+}
+
+.banner img {
+    margin-top: -120px;
+    margin-bottom: -120px;
+    width: 100%;
+    display: block;
+}
+
+.mid {
+    display: flex;
+    gap: 0;
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0.67);
+    border-width: 4px;
+    box-shadow: 6px 8px 12px; 
+    border-style: outset;
+    justify-content: center;
+    padding: 1%;
+    width: 60%;
+}
+
+.left {
+    width: 20%;
+    border: 1px dashed black;
+}
+
+.navigation {
+    width: fit-content;
+    margin: auto;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.navigation ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+.made_with {
+    display: flex; 
+    height: 31px;
+    overflow: hidden;
+}
+
+.center {
+    margin-left: 1%;
+    margin-right: 1%;
+    height: 600px;
+    width: 750px;
+}
+
+.welcome {
+    margin: auto;
+}
+
+.intro {
+    font-size: 24px;
+    text-align: center;
+}
+
+.intro img {
+    display: block;
+    margin: 20px auto;
+    width: 70%;
+}
+
+.hobby {
+    display: flex;
+    flex-direction: column;
+}
+
+.hobby img {
+    width: 150px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+.hobby_block {
+    width: 600px;
+    display: flex;
+    margin: auto;
+    overflow: hidden;
+}
+
+.right {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    border: 1px dashed black;
+
+}
+
+.logs {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+.log_main{
+    margin: auto;
+}
+
+.changelogs {
+    border: 1px dashed black;
+    height: 200px;
+    overflow: scroll;
+}
+
+.changelogs h3 {
+    text-align: center;
+    margin: 0;
+}
+
+.loglist {
+    width: fit-content;
+}
+
+.loglist li {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+
+.loglist h3 {
+    text-align: left;
+}
+
+.ads {
+    list-style-type: none;
+    position: inherit;
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    bottom: 0;
+}
+
+.ads img{
+    display: none;
+    height: 200px;
+    width: 200px;
+}
+
+.top {
+    font-family: "DMC";
+}
+
+.logfull {
+    list-style-type: none;
+    padding: 0;
+}
+
+.metalog {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+.date {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    font-size: 20px;
+    padding: 5px;
+}
+
+.log {
+    font-size: 18px;
+}
