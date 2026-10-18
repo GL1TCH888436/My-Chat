@@ -1,0 +1,83 @@
+ body {
+   margin: 0;
+   padding: 24px;
+   background: #fffafd;
+   color: #493b4b;
+   font: 14px monospace;
+ }
+
+ main {
+   max-width: 650px;
+   margin: 0 auto;
+ }
+
+ h1 {
+   font-size: 18px;
+   font-weight: normal;
+   border-bottom: 1px dashed #d7a9c8;
+   padding-bottom: 12px;
+ }
+
+ #status {
+   color: #987b93;
+   font-size: 12px;
+   margin: 12px 0;
+ }
+
+ #messages {
+   height: 360px;
+   overflow-y: auto;
+   border: 1px solid #e8cddd;
+   background: white;
+   padding: 12px;
+   overflow-wrap: anywhere;
+ }
+
+ .message {
+   margin: 0 0 8px;
+   line-height: 1.5;
+ }
+
+ .number {
+   color: #b47aa1;
+ }
+
+ .name {
+   color: #875a87;
+ }
+
+ form {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 6px;
+   margin-top: 10px;
+ }
+
+ input,
+ button {
+   box-sizing: border-box;
+   padding: 10px;
+   border: 1px solid #dfbfd4;
+   border-radius: 0;
+   background: white;
+   color: inherit;
+   font: inherit;
+ }
+
+ #name {
+   width: 100px;
+ }
+
+ #message {
+   flex: 1;
+   min-width: 120px;
+ }
+
+ button {
+   cursor: pointer;
+   background: #f8eaf3;
+ }
+
+ button:hover {
+   background: #f0d9e8;
+ }
