@@ -19,6 +19,7 @@ body {
     background-image: url("../images/background.png");
     background-size: cover;
     margin: 0 0;
+    font
 }
 
 p {
@@ -30,6 +31,13 @@ a {
     text-decoration: none;
     width: fit-content;
 }
+
+main {
+    font-family: "pixel";
+    margin-top: 3%;
+    justify-content: center;
+}
+
 /* Чат */
 
 #status {
