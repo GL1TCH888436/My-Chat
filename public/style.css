@@ -1,101 +1,31 @@
+
 @font-face {
     font-family: "DMC";
-    src: url("../fonts/Devil May Cry 4/Trajan Pro Regular.ttf") format("truetype");
+    src: url("/fonts/Devil%20May%20Cry%204/Trajan%20Pro%20Regular.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
-    
     font-family: "pixel";
-    src: url("../fonts/UnifontExMono.ttf") format("truetype");
+    src: url("/fonts/UnifontExMono.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
 }
 
+/* Основная страница */
 
 body {
+    background-color: #fffafd;
     background-image: url("/images/background.png");
     background-size: cover;
-    margin: 0 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 24px;
+    color: #493b4b;
+    font: 14px monospace;
 }
-
- main {
-   max-width: 650px;
-   margin: 0 auto;
- }
-
- h1 {
-   font-size: 18px;
-   font-weight: normal;
-   border-bottom: 1px dashed #d7a9c8;
-   padding-bottom: 12px;
- }
-
- #status {
-   color: #987b93;
-   font-size: 12px;
-   margin: 12px 0;
- }
-
- #messages {
-   height: 360px;
-   overflow-y: auto;
-   border: 1px solid #e8cddd;
-   background: white;
-   padding: 12px;
-   overflow-wrap: anywhere;
- }
-
- .message {
-   margin: 0 0 8px;
-   line-height: 1.5;
- }
-
- .number {
-   color: #b47aa1;
- }
-
- .name {
-   color: #875a87;
- }
-
- form {
-   display: flex;
-   flex-wrap: wrap;
-   gap: 6px;
-   margin-top: 10px;
- }
-
- input,
- button {
-   box-sizing: border-box;
-   padding: 10px;
-   border: 1px solid #dfbfd4;
-   border-radius: 0;
-   background: white;
-   color: inherit;
-   font: inherit;
- }
-
- #name {
-   width: 100px;
- }
-
- #message {
-   flex: 1;
-   min-width: 120px;
- }
-
- button {
-   cursor: pointer;
-   background: #f8eaf3;
- }
-
- button:hover {
-   background: #f0d9e8;
- }
-
 
 p {
     padding: 0;
@@ -108,10 +38,87 @@ a {
 }
 
 main {
-    font-family: "pixel";
+    max-width: 650px;
+    margin: 0 auto;
     margin-top: 3%;
+    font-family: "pixel", monospace;
     justify-content: center;
 }
+
+h1 {
+    font-size: 18px;
+    font-weight: normal;
+    border-bottom: 1px dashed #d7a9c8;
+    padding-bottom: 12px;
+}
+
+/* Чат */
+
+#status {
+    color: #987b93;
+    font-size: 12px;
+    margin: 12px 0;
+}
+
+#messages {
+    height: 360px;
+    overflow-y: auto;
+    overflow-wrap: anywhere;
+    border: 1px solid #e8cddd;
+    background: white;
+    padding: 12px;
+}
+
+.message {
+    margin: 0 0 8px;
+    line-height: 1.5;
+}
+
+.number {
+    color: #b47aa1;
+}
+
+.name {
+    color: #875a87;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+input,
+button {
+    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid #dfbfd4;
+    border-radius: 0;
+    background: white;
+    color: inherit;
+    font: inherit;
+}
+
+#name {
+    width: 100px;
+}
+
+#message {
+    flex: 1;
+    min-width: 120px;
+}
+
+button {
+    cursor: pointer;
+    background: #f8eaf3;
+}
+
+button:hover {
+    background: #f0d9e8;
+}
+
+/* Падающие лепестки сакуры */
 
 #sakura-overlay {
     position: fixed;
@@ -132,17 +139,22 @@ main {
 }
 
 @keyframes sakura-fall {
-0% {
-    transform: translate3d(0, -5vh, 0) rotate(0deg);
-}
-100% {
-    transform: translate3d(100px, 110vh, 0) rotate(600deg);
-}
+    0% {
+        transform: translate3d(0, -5vh, 0) rotate(0deg);
+    }
+
+    100% {
+        transform: translate3d(100px, 110vh, 0) rotate(600deg);
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    #sakura-overlay { display: none; }
+    #sakura-overlay {
+        display: none;
+    }
 }
+
+/* Баннер */
 
 .banner {
     margin: auto;
@@ -158,23 +170,43 @@ main {
     display: block;
 }
 
+/* Основная трёхколоночная область */
+
 .mid {
     display: flex;
     gap: 0;
     margin: auto;
     background-color: rgba(255, 255, 255, 0.67);
     border-width: 4px;
-    box-shadow: 6px 8px 12px; 
+    box-shadow: 6px 8px 12px;
     border-style: outset;
     justify-content: center;
     padding: 1%;
     width: 60%;
+    box-sizing: border-box;
 }
 
 .left {
     width: 20%;
     border: 1px dashed black;
 }
+
+.center {
+    margin-left: 1%;
+    margin-right: 1%;
+    height: 600px;
+    width: 750px;
+}
+
+.right {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px dashed black;
+}
+
+/* Навигация */
 
 .navigation {
     width: fit-content;
@@ -189,18 +221,15 @@ main {
     text-align: center;
 }
 
+/* Бейджи */
+
 .made_with {
-    display: flex; 
+    display: flex;
     height: 31px;
     overflow: hidden;
 }
 
-.center {
-    margin-left: 1%;
-    margin-right: 1%;
-    height: 600px;
-    width: 750px;
-}
+/* Приветствие и хобби */
 
 .welcome {
     margin: auto;
@@ -235,14 +264,7 @@ main {
     overflow: hidden;
 }
 
-.right {
-    width: 20%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; 
-    border: 1px dashed black;
-
-}
+/* Логи */
 
 .logs {
     display: flex;
@@ -250,8 +272,7 @@ main {
     flex-direction: column;
 }
 
-
-.log_main{
+.log_main {
     margin: auto;
 }
 
@@ -281,6 +302,8 @@ main {
     text-align: left;
 }
 
+/* Рекламные изображения */
+
 .ads {
     list-style-type: none;
     position: inherit;
@@ -290,15 +313,19 @@ main {
     bottom: 0;
 }
 
-.ads img{
+.ads img {
     display: none;
     height: 200px;
     width: 200px;
 }
 
+/* Заголовки в стиле Devil May Cry */
+
 .top {
-    font-family: "DMC";
+    font-family: "DMC", serif;
 }
+
+/* Полные логи */
 
 .logfull {
     list-style-type: none;
