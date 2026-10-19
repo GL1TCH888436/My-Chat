@@ -16,15 +16,9 @@
 /* Основная страница */
 
 body {
-    background-color: #fffafd;
-    background-image: url("/images/background.png");
+    background-image: url("../images/background.png");
     background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    margin: 0;
-    padding: 24px;
-    color: #493b4b;
-    font: 14px monospace;
+    margin: 0 0;
 }
 
 p {
@@ -36,22 +30,6 @@ a {
     text-decoration: none;
     width: fit-content;
 }
-
-main {
-    max-width: 650px;
-    margin: 0 auto;
-    margin-top: 3%;
-    font-family: "pixel", monospace;
-    justify-content: center;
-}
-
-h1 {
-    font-size: 18px;
-    font-weight: normal;
-    border-bottom: 1px dashed #d7a9c8;
-    padding-bottom: 12px;
-}
-
 /* Чат */
 
 #status {
