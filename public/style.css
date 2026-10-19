@@ -20,14 +20,6 @@ body {
     margin: 0 0;
 }
 
- body {
-   margin: 0;
-   padding: 24px;
-   background: #fffafd;
-   color: #493b4b;
-   font: 14px monospace;
- }
-
  main {
    max-width: 650px;
    margin: 0 auto;
